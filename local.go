@@ -34,8 +34,9 @@ const (
 )
 
 var (
-	httpListen  = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
-	openBrowser = flag.Bool("openbrowser", true, "open browser automatically")
+	httpListen      = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
+	openBrowser     = flag.Bool("openbrowser", true, "open browser automatically")
+	contentLocation = flag.String("contentlocation", basePkg, "content location for tour")
 )
 
 var (
@@ -81,9 +82,16 @@ func main() {
 	}
 
 	// find and serve the go tour files
-	root, err := findRoot()
-	if err != nil {
-		log.Fatalf("Couldn't find tour files: %v", err)
+	var root string
+	var err error
+	log.Println("value of flag is: ", *contentLocation)
+	if isRoot(*contentLocation) {
+		root = *contentLocation
+	} else {
+		root, err = findRoot()
+		if err != nil {
+			log.Fatalf("Couldn't find tour files: %v", err)
+		}
 	}
 
 	log.Println("Serving content from", root)
