@@ -5,6 +5,8 @@ https://tour.golang.org to start the tour.
 
 ## Download/Install
 
+### Official version
+
 To install the tour from source, first
 [set up a workspace](https://golang.org/doc/code.html) and then run:
 
@@ -13,26 +15,23 @@ To install the tour from source, first
 This will place a `tour` binary in your workspace's `bin` directory, which
 can be run offline.
 
-## Contributing
+### This version
 
-Contributions should follow the same procedure as for the Go project:
-https://golang.org/doc/contribute.html
+Installation procedure still under work. For now, git clone and go build.
+There is an additional flag in the binary to specify the location of the static content.
 
-To run the tour server locally:
+Use `--help` for the binary help.
 
-```sh
-dev_appserver.py app.yaml
-```
+## Add a new section to the tour
 
-and then visit [http://localhost:8080/](http://localhost:8080) in your browser.
+- Write the `.article` in the `content` folder
+- See if this a new section. Then add an entry in `static/js/values.js` in the `tableOfContents`
+- In the same file, edit the `mapping` variable accordingly
 
 ## Report Issues / Send Patches
 
-This repository uses Gerrit for code changes. To learn how to submit changes to
-this repository, see https://golang.org/doc/contribute.html.
-
 The main issue tracker for the tour is located at
-https://github.com/golang/go/issues. Prefix your issue with "tour:" in the
+https://github.com/sofianinho/tour/issues. Prefix your issue with "tour:" in the
 subject line, so it is easy to find.
 
 ## License
