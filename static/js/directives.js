@@ -213,6 +213,31 @@ directive('tableOfContents', ['$routeParams', 'toc',
     }
 ]).
 
+// codereview button for those who want to send reviews
+directive('codereviewButton', ['i18n', function(i18n) {
+    return {
+        restrict: 'A',
+        templateUrl: '/static/partials/codereview-button.html',
+        link: function(scope, elm, attrs) {
+            scope.codereviewMessage = i18n.l('submit-codereview');
+
+            elm.on('click', function() {
+                var context = window.location.pathname === '/list'
+                    ? '/list'
+                    : '/' + scope.params.lessonId + '/' + scope.params.pageNumber;
+	        context = window.location.protocol + '//' + window.location.host + context;
+                var title = i18n.l('review-title');
+                var body = i18n.l('context') + ': '+ context + '\n\n'+ i18n.l('review-message');
+                var url = 'https://' + i18n.l('github-repo') + '/issues/new'
+                    + '?title=' + encodeURIComponent(title)
+                    + '&body=' + encodeURIComponent(body);
+                window.open(url);
+            });
+        }
+    };
+    }
+]).
+
 directive('feedbackButton', ['i18n', function(i18n) {
     return {
         restrict: 'A',

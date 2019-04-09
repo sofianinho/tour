@@ -52,11 +52,14 @@ value('translation', {
     'waiting': 'Waiting for remote server...',
     'errcomm': 'Error communicating with remote server.',
     'submit-feedback': 'Send feedback about this page',
+    'submit-codereview': 'Send your code for review',
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/sofianinho/tour',
     'issue-title': 'tour: [REPLACE WITH SHORT DESCRIPTION]',
     'issue-message': 'Change the title above to describe your issue and add your feedback here, including code if necessary',
+    'review-title': 'tour: [REPLACE WITH SHORT DESCRIPTION OF THE CODE]',
+    'review-message': 'Change the title above to describe your solution, copy-paste the code, what works and what not',
     'context': 'Context',
 }).
 
