@@ -232,7 +232,15 @@ a#run, a#kill {
     background: #fafafa;
     margin: 0;
 }
+.docker > pre {
+    font-family: 'Inconsolata', monospace;
+    background: #fafafa;
+    margin: 0;
+}
 .output .system {
+    color: #888;
+}
+.docker .system {
     color: #888;
 }
 .output .stderr {
@@ -242,6 +250,9 @@ a#run, a#kill {
     float: left;
 }
 .output-menu, #file-menu {
+    background: #fafafa;
+}
+.docker-menu, #file-menu {
     background: #fafafa;
 }
 #explorer {
@@ -305,6 +316,12 @@ a#run, a#kill {
     }
     .output {
         background-image: url(/static/img/gopher.png);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-color: #fff;
+    }
+    .docker {
+        background-image: url(/static/img/docker.png);
         background-repeat: no-repeat;
         background-position: bottom;
         background-color: #fff;
@@ -404,6 +421,16 @@ a#run, a#kill {
         padding: 0;
         overflow: auto;
     }
+    .docker {
+        position: absolute;
+        top: 34px;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+    }
 }
 @media (max-width: 600px) {
     #top-part {
@@ -419,6 +446,11 @@ a#run, a#kill {
         height: 32px;
     }
     .output {
+        background: white;
+        max-height: 300px;
+        overflow: auto;
+    }
+    .docker {
         background: white;
         max-height: 300px;
         overflow: auto;

@@ -34,6 +34,16 @@ value('tableOfContents', [{
     'lessons': ['concurrency']
 }]).
 
+// playground possible values
+value('playgrounds', {
+    // Docker playground URL
+    'pwd-url': 'https://labs.play-with-docker.com/',
+    //Orange playground URL
+    'playground-url': 'http://lucy1.rd.francetelecom.fr/',
+    //Orange DIF playground URL
+    'dif-url': 'http://playwithdocker.si.francetelecom.fr ',
+}).
+
 // translation
 value('translation', {
     'off': 'off',
@@ -50,6 +60,7 @@ value('translation', {
     'prev': 'Previous',
     'next': 'Next',
     'waiting': 'Waiting for remote server...',
+    'playground': 'Redirecting to the playground',
     'errcomm': 'Error communicating with remote server.',
     'submit-feedback': 'Send feedback about this page',
     'submit-codereview': 'Send your code for review',

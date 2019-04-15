@@ -30,6 +30,18 @@ factory('i18n', ['translation',
     }
 ]).
 
+// Playground
+factory('players', ['playgrounds',
+    function(playgrounds) {
+        return {
+            p: function(key) {
+                if (playgrounds[key]) return playgrounds[key];
+                return '(no playground url for ' + key + ')';
+            }
+        };
+    }
+]).
+
 // Running code
 factory('run', ['$window', 'editor',
     function(win, editor) {

@@ -10,8 +10,8 @@
 angular.module('tour.controllers', []).
 
 // Navigation controller
-controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 'run', 'fmt', 'editor', 'analytics', 'storage',
-    function($scope, $routeParams, $location, toc, i18n, run, fmt, editor, analytics, storage) {
+controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 'players', 'run', 'fmt', 'editor', 'analytics', 'storage',
+    function($scope, $routeParams, $location, toc, i18n, players, run, fmt, editor, analytics, storage) {
         var lessons = [];
         toc.lessons.then(function(v) {
             lessons = v;
@@ -31,6 +31,7 @@ controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 
         $scope.curPage = parseInt($routeParams.pageNumber);
         $scope.curFile = 0;
         $scope.job = null;
+        $scope.jobType = 'go';
 
         $scope.nextPageClick = function(event) {
             event.preventDefault();
@@ -71,13 +72,26 @@ controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 
         function log(mode, text) {
             $('.output.active').html('<pre class="' + mode + '">' + text + '</pre>');
         }
+        
+        function logd(mode, text) {
+            $('.docker.active').html('');
+            $('.docker.active').html('<pre class="' + mode + '">' + text + '</pre>');
+        }
 
         function clearOutput() {
             $('.output.active').html('');
         }
 
         function file() {
-            return lessons[$scope.lessonId].Pages[$scope.curPage - 1].Files[$scope.curFile];
+            retFile = lessons[$scope.lessonId].Pages[$scope.curPage - 1].Files[$scope.curFile];
+            if (retFile != null) {
+                if (retFile.Name.indexOf('Dockerfile') == 0) {
+                    $scope.jobType = 'docker';
+                } else{
+                    $scope.jobType = 'go';
+                }
+            }
+            return retFile;
         }
 
         $scope.run = function() {
@@ -93,6 +107,12 @@ controller('EditorCtrl', ['$scope', '$routeParams', '$location', 'toc', 'i18n', 
 
         $scope.kill = function() {
             if ($scope.job !== null) $scope.job.Kill();
+        };
+
+        $scope.play = function(){
+            playURL = players.p('pwd-url');
+            logd('info', i18n.l('playground')+': '+playURL);
+            window.open(playURL, "_blank");
         };
 
         $scope.format = function() {
