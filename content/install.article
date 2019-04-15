@@ -1,19 +1,52 @@
 Before you start: environment, IDE, books, and ressources
 Before you start being productive in go, some things need to be setup on your machine
 
+If you come from the python community, it is important to emphasize that the installation of the golang environment is only necessary for the developement and testing phase. In general, you do not install the language on the machine you deploy on in production. This is due to the nature of the language (*compiled*) which creates a binary using the tooling.
+
 * Install Golang
 
-This is how you do it
+You have the choice between several methods. 
+
+** On your machine
+
+.link https://golang.org/doc/install Official installation of golang
+
+** Using Docker
+
 
 * Setup the IDE
 
 - Step 1
 - Step 2
 
-* More books online
+* Compiling your first hello world
 
-- Book 1
-- Book 2
+.play install/hellogopher.go
+
+* Deployment
+
+You can use the following Dockerfile as an example to compile a static binary and deploy in production.
+
+.play install/Dockerfile
+
+** Walkthrough
+
+- Base image: this is the first statement of the Dockerfile
+
+`FROM golang:1.12-alpine AS build`
+
+We are using the most recent golang version (at the time of writing) in an Alpine base image. This means 
+
+
+
+* Good online resources
+
+To go further down the path to go, the following online resources and also books might help you.
+
+** Book 1
+** Book 2
+
+.play install/Dockerfile.another
 
 * Congratulations!
 
