@@ -52,6 +52,13 @@ Usage of tour:
 
 ```
 
+## Run with docker
+
+Runs the tour with origin check disabled (see warning above), to answer requests from anywhere
+
+```
+docker run -d -p 80:3999 sofianinho/tour:latest tour -disableOriginCheck -http "0.0.0.0:3999"
+```
 
 ## Report Issues / Send Patches
 
