@@ -28,6 +28,31 @@ Use `--help` for the binary help.
 - See if this a new section. Then add an entry in `static/js/values.js` in the `tableOfContents`
 - In the same file, edit the `mapping` variable accordingly
 
+## Major security related change from original repo
+
+This tour version can accept code in the playground without origin checks. This is obviously to be used very carefully
+
+It is intended to be used in a trusted environment, preferably on a dummy machine/chroot/jail just in case.
+
+It might be very useful for a training session with beginers for example. 
+
+By default, this is not enabled. You have the choice of enable this mode if you want by setting the `disableOriginCheck` flag.
+
+```
+tour --help
+Usage of tour:
+  -contentlocation string
+    	content location for tour (default "github.com/sofianinho/tour")
+  -disableOriginCheck
+    	Disables Origin checks from playground. Use with Caution.
+  -http string
+    	host:port to listen on (default "127.0.0.1:3999")
+  -openbrowser
+    	open browser automatically (default true)
+
+```
+
+
 ## Report Issues / Send Patches
 
 The main issue tracker for the tour is located at

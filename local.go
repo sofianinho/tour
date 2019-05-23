@@ -20,6 +20,7 @@ import (
 	"strings"
 	"time"
 
+	"golang.org/x/net/websocket"
 	"golang.org/x/tools/playground/socket"
 
 	// Imports so that go build/install automatically installs them.
@@ -35,6 +36,7 @@ const (
 
 var (
 	httpListen      = flag.String("http", "127.0.0.1:3999", "host:port to listen on")
+	disableOriginCheck = flag.Bool("disableOriginCheck", false, "Disables Origin checks from playground. Use with Caution.")
 	openBrowser     = flag.Bool("openbrowser", true, "open browser automatically")
 	contentLocation = flag.String("contentlocation", basePkg, "content location for tour")
 )
@@ -114,9 +116,13 @@ func main() {
 
 	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/lesson/", lessonHandler)
-
 	origin := &url.URL{Scheme: "http", Host: host + ":" + port}
-	http.Handle(socketPath, socket.NewHandler(origin))
+	wsServer := socket.NewHandler(origin)
+	if *disableOriginCheck{
+		log.Print(disableOriginCheckWarning)
+		wsServer.Handshake = func(_ *websocket.Config,_ *http.Request) (err error) {return nil}
+	}
+	http.Handle(socketPath, wsServer)
 
 	registerStatic(root)
 
@@ -172,6 +178,21 @@ If you don't understand this message, hit Control-C to terminate this process.
 
 WARNING!  WARNING!  WARNING!
 `
+
+const disableOriginCheckWarning = `
+DANGER !!! 
+
+You have disabled the Origin check for the websockets. You have opend the golang playground 
+on any websocket origin which means arbitrary code can run in your server from anywhere without
+regards for the http host you set. 
+Detail: this replaces the handshake in: https://github.com/golang/tools/blob/master/playground/socket/socket.go#L80
+by a nil function. 
+This is obviously very dangerous as it runs arbitrary code on your machine use at your own risk, in a trusted environment. 
+I decline all responsibility from misusages. Use responsibly
+
+DANGER !!! 
+`
+
 
 type response struct {
 	Output string `json:"output"`
