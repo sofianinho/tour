@@ -95,25 +95,76 @@ You can use the following command to install VSC
 
 Once you installed VCS, you can download some useful plugins using Ctrl+Shift+X and search for Go and Docker.
 
-* Compiling your first hello world
+* Compiling your first Hello World !
+
+A simple [[https://en.wikipedia.org/wiki/%22Hello,_World!%22_program][Hello World]] program is shown on the code section on the right side of the screen.
+
+To run it, you can click on the *Run* button, at the bottom of the code section. Feel free to modify it and re-compile it :)
 
 .play install/hellogopher.go
 
+** Walkthrough
+
+This program present three of the main section of a typical go program:
+
+.html install/hw-walkthrough.html
+
 * Deployment
 
-You can use the following Dockerfile as an example to compile a static binary and deploy in production.
+You can use the following Dockerfile as an example to compile a static binary and deploy it in production.
+
+To learn more about the syntax of a Dockerfile, please visit the following link:
+
+.link https://docs.docker.com/engine/reference/builder/
 
 .play install/Dockerfile
 
 ** Walkthrough
 
-- Base image: this is the first statement of the Dockerfile
+*FROM*
 
-`FROM golang:1.12-alpine AS build`
+The FROM instruction initializes a new build stage and sets the Base Image for subsequent instructions. As such, a valid Dockerfile must start with a FROM instruction.
 
-We are using the most recent golang version (at the time of writing) in an Alpine base image. This means 
+FROM golang:1.12-alpine AS build
 
+We are using the most recent golang version (at the time of writing) in an Alpine base image. We also give the name build to this base image using the keywork AS. 
 
+You can also notice that we are using FROM two times in this Dockerfile. This means that we are creating a multi-stage build, where the first stage is called build, and the second (the last one) is going to give us our final result (Docker image) using artifacts from previous stages.
+
+To learn more about muti-stage build, please visit:
+
+.link https://docs.docker.com/develop/develop-images/multistage-build/
+
+*COPY*
+
+The COPY instruction copies new files or directories from <src> and adds them to the filesystem of the container at the path <dest>.
+Multiple <src> resources may be specified but the paths of files and directories will be interpreted as relative to the source of the context of the build.
+
+In this example, we are copying all the content of the current folder (the path of our Dockerfile) to the /go/src/github.com/user/hello destination folder inside our Docker image filesystem.
+
+*WORKDIR*
+
+The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile. If the WORKDIR doesn’t exist, it will be created even if it’s not used in any subsequent Dockerfile instruction.
+
+In our example, we are setting the working directory (think of it as a simple cd command) to /go/src/github.com/user/hello
+
+*RUN*
+
+The RUN instruction will execute any commands in a new layer on top of the current image and commit the results. The resulting committed image will be used for the next step in the Dockerfile.
+
+*LABEL*
+
+The LABEL instruction adds metadata to an image. A LABEL is a key-value pair. To include spaces within a LABEL value, use quotes and backslashes as you would in command-line parsing.
+
+*CMD*
+
+There can only be one CMD instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
+
+The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable, or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.
+
+To know the difference between CMD and ENTRYPOINT, I recommend reading this blog post:
+
+.link https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
 
 * Good online resources
 
