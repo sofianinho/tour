@@ -109,7 +109,7 @@ ul {
     padding: 8px 24px;
     line-height: 32px;
     color: #222;
-    background: #E0EBF5;
+    background: #F6F4FF;
 }
 .nav {
     float: right;
@@ -144,7 +144,7 @@ ul {
     margin: 0;
 }
 .lesson {
-    background: #E0EBF5;
+    background: #F6F4FF;
     padding: 8px 16px;
     margin: 16px 0;
     position: relative;
@@ -180,7 +180,7 @@ ul {
     cursor: pointer;
     font-size: 0.9em;
     border-radius: 2px;
-    background-color: #E0EBF5;
+    background-color: #F6F4FF;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 2px;
     height: 24px;
@@ -331,7 +331,7 @@ a#run, a#kill {
         top: 0px;
         bottom: 0px;
         width: 5px;
-        background: #e0ebf5;
+        background: #F6F4FF;
         left: 50%;
         right: 50%;
         z-index: 100;
@@ -367,7 +367,7 @@ a#run, a#kill {
         right: 0;
         top: 0;
         bottom: 33%;
-        background: #e0ebf5;
+        background: #F6F4FF;
     }
     #file-editor {
         position: absolute;
@@ -382,7 +382,7 @@ a#run, a#kill {
         right: 0;
         bottom: 33%;
         height: 5px;
-        background: #e0ebf5;
+        background: #F6F4FF;
         z-index: 100;
         cursor: move;
     }
@@ -437,7 +437,7 @@ a#run, a#kill {
         border: 1px solid #ccc;
     }
     #left-side {
-        background: #e0ebf5;
+        background: #F6F4FF;
     }
     #right-side {
         padding-top: 48px;
@@ -460,7 +460,7 @@ a#run, a#kill {
     }
     .module-bar {
         position: fixed;
-        background: #e0ebf5;
+        background: #F6F4FF;
         left: 0;
         right: 0;
         bottom: 0;
@@ -490,13 +490,13 @@ a#run, a#kill {
     bottom: 0;
     right: 0;
     width: 500px;
-    background: #e0ebf5;
+    background: #F6F4FF;
     color: black;
     overflow-y: auto;
     padding: 0;
     margin: 0;
-    border-left: 4px solid #e0ebf5;
-    border-bottom: 4px solid #e0ebf5;
+    border-left: 4px solid #F6F4FF;
+    border-bottom: 4px solid #F6F4FF;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -522,7 +522,7 @@ a#run, a#kill {
 }
 .toc-module {
     color: #375eab;
-    background: #e0ebf5;
+    background: #F6F4FF;
 }
 .toc-lesson {
     background: #fafafa;
