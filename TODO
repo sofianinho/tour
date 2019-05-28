@@ -3,6 +3,11 @@ should be added (prefixed by -). It should be kept up-to-date with tour.article.
 
 * Hello, 世界
 * Go local
+* Install Golang
+* Setup an IDE
+* Compile a first Hello World
+* Deployment
+* Good resources
 * Packages
 * Imports
 - "Imported but not used" errors (later perhaps)
