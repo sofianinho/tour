@@ -24,3 +24,6 @@ run:
 		-p 80:3999  \
 		$(APP_NAME):latest \
 		tour -disableOriginCheck -http "0.0.0.0:3999"
+
+.PHONY: test
+test: build run
