@@ -1,23 +1,99 @@
 Before you start: environment, IDE, books, and ressources
 Before you start being productive in go, some things need to be setup on your machine
 
-If you come from the python community, it is important to emphasize that the installation of the golang environment is only necessary for the developement and testing phase. In general, you do not install the language on the machine you deploy on in production. This is due to the nature of the language (*compiled*) which creates a binary using the tooling.
-
 * Install Golang
+
+If you come from the python community, it is important to emphasize that the installation of the golang environment is only necessary for the developement and testing phase. In general, you do not install the language on the machine you deploy on in production. This is due to the nature of the language (*compiled*) which creates a binary using the tooling.
 
 You have the choice between several methods. 
 
-** On your machine
+** Baremetal
 
-.link https://golang.org/doc/install Official installation of golang
+In this method, Go will be installed directly on your machine. You can use one of the two following options.
 
-** Using Docker
+*Manual*
 
+To get started, go to the following address: [[http://golang.org/dl/]] and download the Linux archive file. At the time of writing this tutorial, the version of Go is 1.12.4 in 64-bit amd.
 
-* Setup the IDE
+To extract and copy the content under `/usr/local/` you can execute the following command:
 
-- Step 1
-- Step 2
+  tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
+
+Then we need to update the environment variabel PATH to include go's binaries:
+
+  export PATH=$PATH:/usr/local/go/bin
+
+Finally, you can test if the installation succeeded:
+
+  go version
+
+The result looks like:
+
+  go version go1.12.3 linux/amd64
+
+To explore the installation process more deeply, you can go to [[https://golang.org/doc/install]]
+
+*Automated*
+
+I recommend the following project to install and update to the latest version of Golang on you system:
+
+.link https://github.com/udhos/update-golang
+
+Using three simple command, you can have an up an running Golang install, in few seconds:
+
+  git clone https://github.com/udhos/update-golang
+  cd update-golang
+  sudo ./update-golang.sh
+
+** Virtual Machine
+
+In this method, we use a virtual machine to create a development environment for Golang.
+
+The following project uses Vagrant to create such environment:
+
+.link https://github.com/abousselmi/vagrant-ubuntu-golang
+
+** Container
+
+Just like using a dedicated Virtual Machine as a development environment, you can also use a Docker container very easely.
+
+The following image (just an example, you can find others, or create your own) to launch a Golang development environment container:
+
+.link https://github.com/cburki/docker-golang-dev
+
+* Setup the IDE/Plugins
+
+Multiple IDEs/Plugins are available to start writing Go code. 
+
+.link https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins
+
+The golang community recommends some:
+
+.html install/ide-plugin.html
+
+Feel free to choose the IDE/Plugin that suits you best. In the following we are going to use VSC.
+
+** Install Visual Studio Code
+
+*Debian*
+
+For debian based systems you can use eather a .deb package or a snap.
+
+You can download the latest version here:
+
+.link https://code.visualstudio.com/download
+
+Then you can use the following command to install VSC:
+
+  sudo apt install ./code_1.34.0-1557957934_amd64.deb
+
+*Snap*
+
+You can use the following command to install VSC
+
+  sudo snap install code --classic
+
+Once you installed VCS, you can download some useful plugins using Ctrl+Shift+X and search for Go and Docker.
 
 * Compiling your first hello world
 
