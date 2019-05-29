@@ -170,8 +170,7 @@ To know the difference between CMD and ENTRYPOINT, I recommend reading this blog
 
 To go further down the path to go, the following online resources and also books might help you.
 
-** Book 1
-** Book 2
+.html install/resources.html
 
 .play install/Dockerfile.another
 
