@@ -162,6 +162,8 @@ There can only be one CMD instruction in a Dockerfile. If you list more than one
 
 The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable, or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.
 
+*More*
+
 To know the difference between CMD and ENTRYPOINT, I recommend reading this blog post:
 
 .link https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
@@ -170,10 +172,8 @@ To know the difference between CMD and ENTRYPOINT, I recommend reading this blog
 
 To go further down the path to go, the following online resources and also books might help you.
 
-** Book 1
-** Book 2
+.html install/resources.html
 
-.play install/Dockerfile.another
 
 * Congratulations!
 
